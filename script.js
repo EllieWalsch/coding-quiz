@@ -1,7 +1,9 @@
 const startBtn = document.querySelector("#btn");
+const quizContainer = document.querySelector(".quiz")
 
-startBtn.addEventListener("click", function(){
-    console.log("button clicked")
-})
+startBtn.addEventListener("click", startQuiz)
 
-// TODO: display a start quiz screen with functional button
+// TODO: when button is clicked, display something
+function startQuiz (){
+    document.querySelector(".quiz").innerHTML = "YOU CLICKED ME!";
+}
