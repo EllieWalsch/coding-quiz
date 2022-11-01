@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Coding Quiz</title>
 </head>
 
@@ -12,11 +13,12 @@
     <button id="btn" type="button">
       Start quiz
     </button>
-  
+  <!-- Hide quiz to view high score page -->
   <section id="quiz" class="hidden">
-    <h2>
-
-    </h2>
+    <h2 id="question"></h2>
+    <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+    <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+    <div class="choice" id="C" onclick="checkAnswer('C')"></div>
   </section>
 
   <script type="module" src="./src/script.js"></script>
