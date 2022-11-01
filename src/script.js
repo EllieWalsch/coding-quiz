@@ -4,7 +4,7 @@ const choiceA = document.querySelector("#A");
 const choiceB = document.querySelector("#B");
 const choiceC = document.querySelector("#C");
 
-let questions = [
+const questions = [
     {
         question : "Question 1?",
 
@@ -14,7 +14,7 @@ let questions = [
 
         choiceC : "Wrong",
 
-        correct : "choiceA"
+        correct : choiceA
     },{
         question : "Question 2?",
 
@@ -24,7 +24,7 @@ let questions = [
 
         choiceC : "Wrong",
 
-        correct : "choiceB"
+        correct : choiceB
     },{
         question : "Question 3?",
 
@@ -34,7 +34,7 @@ let questions = [
 
         choiceC : "Correct",
 
-        correct : "choiceC"
+        correct : choiceC
     }
 ];
 
@@ -59,18 +59,17 @@ function startQuestions () {
     choiceC.innerText = currentQ.choiceC;
 }
 
+// Compare user answer with correct answer
 function checkAnswer(event) {
     let userAns = event.target
-    if (userAns === correct) {
+    if (userAns === questions[currentQuestionIndex].correct) {
         console.log("correct")
     } else {
         console.log("wrong")
     }
-     
-//   TODO: compare user answer with correct answer using ===
 }
 
-// TODO: check if answer is correct
+// TODO: Create timer - when startQuestions is called, begin countdown
 
 
 startBtn.addEventListener("click", hideIntro);
