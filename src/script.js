@@ -14,7 +14,7 @@ let questions = [
 
         choiceC : "Wrong",
 
-        correct : "A"
+        correct : "choiceA"
     },{
         question : "Question 2?",
 
@@ -24,7 +24,7 @@ let questions = [
 
         choiceC : "Wrong",
 
-        correct : "B"
+        correct : "choiceB"
     },{
         question : "Question 3?",
 
@@ -34,7 +34,7 @@ let questions = [
 
         choiceC : "Correct",
 
-        correct : "C"
+        correct : "choiceC"
     }
 ];
 
@@ -50,19 +50,33 @@ function hideIntro () {
 let currentQuestionIndex = 0;
 
 
-// Replace text content with values from our question array
+// Replace text content with values from our questions array
 function startQuestions () {
-    let q = questions[currentQuestionIndex];
-    question.innerText = q.question;
-    choiceA.innerText = q.choiceA;
-    choiceB.innerText = q.choiceB;
-    choiceC.innerText = q.choiceC;
+    let currentQ = questions[currentQuestionIndex];
+    question.innerText = currentQ.question;
+    choiceA.innerText = currentQ.choiceA;
+    choiceB.innerText = currentQ.choiceB;
+    choiceC.innerText = currentQ.choiceC;
 }
 
+function checkAnswer(event) {
+    let userAns = event.target
+    if (userAns === correct) {
+        console.log("correct")
+    } else {
+        console.log("wrong")
+    }
+     
+//   TODO: compare user answer with correct answer using ===
+}
 
-// TODO: display a question to the user
+// TODO: check if answer is correct
 
-startBtn.addEventListener("click", hideIntro)
+
+startBtn.addEventListener("click", hideIntro);
+choiceA.addEventListener("click", checkAnswer);
+choiceB.addEventListener("click", checkAnswer);
+choiceC.addEventListener("click", checkAnswer);
 
 
 
