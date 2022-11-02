@@ -2,6 +2,48 @@
     display: none;
 }
 
+body {
+    font-family: sans-serif;
+    background-color: #f9fbfd;
+}
+
+#header,
+#quiz,
+#high-score {
+    text-align: center;
+    padding: 20px;
+    padding-top: 30px;
+}
+
+/* Intro */
+h1 {
+    font-size: 50px;
+}
+
+p {
+    padding: 50px 450px;
+    font-size: 20px;
+}
+
+#btn {
+    padding: 14px 40px;
+    background-color: #008CBA;
+    border-radius: 8px;
+    font-size: 20px;
+    color: #f9fbfd;
+}
+
+/* Quiz */
 li {
     list-style-type: none;
+}
+
+li button {
+    padding: 14px 40px;
+    margin: 10px;
+    width: 30%;
+    background-color: #008CBA;
+    border-radius: 8px;
+    font-size: 20px;
+    color: #f9fbfd;
 }
