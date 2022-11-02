@@ -3,6 +3,7 @@ const startBtn = document.querySelector("#btn");
 let questionH2 = document.getElementById("question");
 let answerList = document.getElementById("list");
 let timeH3 = document.querySelector("h3");
+let timeSeconds = 50;
 
 // TODO: make a const for all of my classes and ids
 
@@ -48,9 +49,9 @@ function startQuestions () {
 function checkAnswer(event) {
     let userAns = event.target.innerText;
     if (userAns === questions[currentQuestionIndex].answer) {
-        console.log("correct");
+        timeSeconds = timeSeconds + 5;
     } else {
-        console.log("wrong");
+        timeSeconds = timeSeconds - 10;
     }
     // Add 1 to our currentQuestionIndex to show another question - TODO: if quiz is over, show high scores
     if (currentQuestionIndex < questions.length - 1) {
@@ -65,7 +66,6 @@ timer ();
 
 // Countdown remaining time
 function timer () {
-    let timeSeconds = 5;
     const countDown = setInterval (() => {
         timeSeconds--;
         timeH3.innerHTML = `${timeSeconds} seconds remaining!`;
@@ -75,7 +75,7 @@ function timer () {
     },1000)
 }
 
-// TODO: If answer is wrong, subtract time
+// TODO: when quiz ends, go to score page
 
 
 
