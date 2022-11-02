@@ -3,6 +3,8 @@ const startBtn = document.querySelector("#btn");
 const question = document.querySelector("#question");
 const answerList = document.querySelector("#list");
 
+// TODO: make a const for all of my classes and ids
+
 
 // Hide intro when quiz begins
 function hideIntro () {
@@ -10,6 +12,8 @@ function hideIntro () {
     document.querySelector("#btn").style.display = "none";
     startQuestions();
 }
+
+// TODO: classList.toggle for hiding and showing
 
 // Hide quiz at the very beginning (will have to do this at high score screen as well)
 function hideQuiz () {
@@ -21,6 +25,7 @@ function hideQuiz () {
 let currentQuestionIndex = 0;
 
 
+// TODO: rework below 
 // Replace text content with values from our questions array
 function startQuestions () {
     document.querySelector("#quiz").style.display = "block";
