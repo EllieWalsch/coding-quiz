@@ -2,6 +2,7 @@ import { questions } from "./lib.js"
 const startBtn = document.querySelector("#btn");
 let questionH2 = document.getElementById("question");
 let answerList = document.getElementById("list");
+let timeH3 = document.querySelector("h3");
 
 // TODO: make a const for all of my classes and ids
 
@@ -15,7 +16,6 @@ function hideIntro () {
     startQuestions();
 }
 
-// TODO: classList.toggle for hiding and showing
 
 // Hide quiz at the very beginning (will have to do this at high score screen as well)
 function hideQuiz () {
@@ -61,11 +61,20 @@ function checkAnswer(event) {
     }
 }
 
-function countDown () {
+timer ();
 
+// Countdown remaining time
+function timer () {
+    let timeSeconds = 5;
+    const countDown = setInterval (() => {
+        timeSeconds--;
+        timeH3.innerHTML = `${timeSeconds} seconds remaining!`;
+        if(timeSeconds <=0) {
+            clearInterval(countDown);
+        }
+    },1000)
 }
 
-// TODO: Make a timer REWATCH 10/27 lecture
 // TODO: If answer is wrong, subtract time
 
 
