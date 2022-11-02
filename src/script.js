@@ -48,8 +48,6 @@ function startQuestions () {
         li.innerHTML = `<button type="button">${choice}</button>`;
         answerList.appendChild(li);
     });
-    
-    timer ();
 }
 
 
@@ -71,11 +69,11 @@ function checkAnswer(event) {
     }
 }
 
-// TODO: BUG - countdown timer counting fast, called timer in startQuestions and messed things up
+
 // TODO: BUG - countdown timer clears timeSeconds after 50 seconds
 
 // Countdown remaining time
-function timer () {
+function startTimer () {
     const countDown = setInterval (() => {
         timeSeconds --;
         timeH3.innerHTML = `${timeSeconds} seconds remaining!`;
@@ -98,7 +96,10 @@ function showScores () {
 // TODO: this will have to be a form?
 
 
-startBtn.addEventListener("click", hideIntro);
+startBtn.addEventListener("click", () => {    
+    hideIntro ();
+    startTimer();    
+});
 answerList.addEventListener("click", checkAnswer);
 
 
