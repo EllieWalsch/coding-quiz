@@ -16,7 +16,6 @@ hideScores ();
 // Hide intro when quiz begins
 function hideIntro () {
     document.querySelector("#header").classList.toggle("hidden");
-    document.querySelector("#btn").classList.toggle("hidden");
     startQuestions();
 }
 
@@ -73,13 +72,14 @@ function checkAnswer(event) {
 }
 
 // TODO: BUG - countdown timer counting fast, called timer in startQuestions and messed things up
+// TODO: BUG - countdown timer clears timeSeconds after 50 seconds
 
 // Countdown remaining time
 function timer () {
     const countDown = setInterval (() => {
         timeSeconds --;
         timeH3.innerHTML = `${timeSeconds} seconds remaining!`;
-        if(timeSeconds <= 0) {
+        if(timeSeconds == 0) {
             clearInterval(countDown);
             showScores ();
         }
