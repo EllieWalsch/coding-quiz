@@ -3,12 +3,15 @@ const startBtn = document.querySelector("#btn");
 let questionH2 = document.getElementById("question");
 let answerList = document.getElementById("list");
 let timeH3 = document.querySelector("h3");
+let userScore = document.getElementById("high-score");
 let timeSeconds = 50;
+
 
 // TODO: make a const for all of my classes and ids
 
 // Begin on intro page
 hideQuiz ();
+hideScores ();
 
 // Hide intro when quiz begins
 function hideIntro () {
@@ -17,10 +20,14 @@ function hideIntro () {
     startQuestions();
 }
 
-
-// Hide quiz at the very beginning (will have to do this at high score screen as well)
+// Hide quiz at the very beginning
 function hideQuiz () {
     document.querySelector("#quiz").classList.toggle("hidden");
+}
+
+// Hide scores during intro and quiz
+function hideScores () {
+    document.querySelector("#high-score").classList.toggle("hidden");
 }
 
 // Begin at question index 0
@@ -42,6 +49,8 @@ function startQuestions () {
         li.innerHTML = `<button type="button">${choice}</button>`;
         answerList.appendChild(li);
     });
+    
+    timer ();
 }
 
 
@@ -58,29 +67,40 @@ function checkAnswer(event) {
         currentQuestionIndex ++;
         startQuestions ();
     } else {
-        console.log("end quiz");
+        showScores (); 
+        return timeSeconds;
     }
 }
 
-timer ();
+// TODO: BUG - countdown timer counting fast, called timer in startQuestions and messed things up
 
 // Countdown remaining time
 function timer () {
     const countDown = setInterval (() => {
-        timeSeconds--;
+        timeSeconds --;
         timeH3.innerHTML = `${timeSeconds} seconds remaining!`;
-        if(timeSeconds <=0) {
+        if(timeSeconds <= 0) {
             clearInterval(countDown);
+            showScores ();
         }
     },1000)
 }
 
-// TODO: when quiz ends, go to score page
 
+// Show timeSeconds as user score
+function showScores () {
+    document.querySelector("#high-score").style.display = "block";
+    document.querySelector("#quiz").style.display = "none";
+    userScore.innerText = `Your score is ${timeSeconds}`;
+}
+
+// TODO: enter initials and save score
+// TODO: this will have to be a form?
 
 
 startBtn.addEventListener("click", hideIntro);
 answerList.addEventListener("click", checkAnswer);
+
 
 
 
