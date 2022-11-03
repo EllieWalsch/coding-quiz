@@ -5,6 +5,7 @@ let answerList = document.getElementById("list");
 let timeH3 = document.querySelector("h3");
 let userScore = document.getElementById("high-score");
 let timeSeconds = 50;
+const interval = 1000;
 
 
 // TODO: make a const for all of my classes and ids
@@ -59,7 +60,7 @@ function checkAnswer(event) {
     } else {
         timeSeconds = timeSeconds - 10;
     }
-    // Add 1 to our currentQuestionIndex to show another question - TODO: if quiz is over, show high scores
+    // Add 1 to our currentQuestionIndex to show another question
     if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex ++;
         startQuestions ();
@@ -70,18 +71,18 @@ function checkAnswer(event) {
 }
 
 
-// TODO: BUG - countdown timer clears timeSeconds after 50 seconds
-
 // Countdown remaining time
-function startTimer () {
-    const countDown = setInterval (() => {
-        timeSeconds --;
+function startTimer() {
+    const startTimerInterval = setInterval (function (){
+        timeSeconds--;
         timeH3.innerHTML = `${timeSeconds} seconds remaining!`;
-        if(timeSeconds == 0) {
-            clearInterval(countDown);
-            showScores ();
+        if (i < 0) {
+            clearInterval(startTimerInterval);
+            showScores();
+        } else if (currentQuestionIndex === questions.length){
+            clearInterval(startTimerInterval);
         }
-    },1000)
+    }, interval)
 }
 
 
