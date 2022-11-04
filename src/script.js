@@ -9,8 +9,6 @@ let timeSeconds = 50;
 const interval = 1000;
 
 
-// TODO: make a const for all of my classes and ids
-
 // Begin on intro page
 hideQuiz ();
 hideScores ();
@@ -71,7 +69,8 @@ function checkAnswer(event) {
     }
 }
 
-
+// TODO: BUG still clears time after 50 seconds
+// Added a placeholder last question - fix this later
 // Countdown remaining time
 function startTimer() {
     const startTimerInterval = setInterval (function (){
@@ -80,8 +79,9 @@ function startTimer() {
         if (timeSeconds <= 0) {
             clearInterval(startTimerInterval);
             showScores();
-        } else if (currentQuestionIndex === questions.length){
+        } else if (currentQuestionIndex == 3){
             clearInterval(startTimerInterval);
+            showScores ();
         }
     }, interval)
 }
@@ -104,9 +104,8 @@ function handleSubmit(event) {
         alert("Please enter your initials.");
         return false;
     } else {
-        console.log(initials);
+        localStorage.setItem(initials , timeSeconds);
     }
-
 }
 
 
