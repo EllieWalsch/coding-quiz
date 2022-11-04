@@ -26,6 +26,7 @@ p {
 }
 
 #btn {
+    /* https://www.w3schools.com/css/css3_buttons.asp */
     padding: 14px 40px;
     background-color: #008CBA;
     border-radius: 8px;
