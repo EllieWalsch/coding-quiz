@@ -84,7 +84,7 @@ function startTimer() {
         if (timeSeconds <= 0) {
             clearInterval(startTimerInterval);
             showScores();
-        } else if (currentQuestionIndex == 3){
+        } else if (currentQuestionIndex == 7){
             clearInterval(startTimerInterval);
             showScores ();
         }
