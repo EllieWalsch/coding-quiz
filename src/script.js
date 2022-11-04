@@ -5,6 +5,10 @@ let answerList = document.getElementById("list");
 let timeH3 = document.querySelector("h3");
 let userScore = document.getElementById("user-score");
 const submitScore = document.getElementById("submit-score");
+const highScores = document.getElementById("top-scores");
+
+const scoreList = document.getElementById("score-list");
+
 let timeSeconds = 50;
 const interval = 1000;
 
@@ -12,6 +16,7 @@ const interval = 1000;
 // Begin on intro page
 hideQuiz ();
 hideScores ();
+
 
 // Hide intro when quiz begins
 function hideIntro () {
@@ -28,6 +33,7 @@ function hideQuiz () {
 function hideScores () {
     document.querySelector("#high-score").classList.toggle("hidden");
 }
+
 
 // Begin at question index 0
 let currentQuestionIndex = 0;
@@ -95,19 +101,48 @@ function showScores () {
 }
 
 
-// TODO: save initials on high score page
 
+// Add initials and score to localStorage
 function handleSubmit(event) {
     event.preventDefault();
     const initials = document.querySelector("#initials").value;
+
     if (initials == "") {
         alert("Please enter your initials.");
         return false;
-    } else {
-        localStorage.setItem(initials , timeSeconds);
-    }
-}
 
+    } else {
+        const userScore = {
+            initials: initials,
+            score: timeSeconds,
+        };
+
+        let allScores = localStorage.getItem("allScores");
+
+        if (allScores === null) {
+            allScores = [];
+        } else {
+            allScores = JSON.parse(allScores);
+        };
+        // Push most recent user score to all scores
+        allScores.push(userScore);
+
+        // Sort all scores from high to low
+        allScores.sort( (a, b) => {
+            return b.score - a.score;
+        });
+
+        // When quiz is reloaded, add new score to all scores
+        const newScore = JSON.stringify(allScores);
+        localStorage.setItem("allScores", newScore);
+
+        console.log(allScores);
+    };
+};
+
+
+
+// TODO: Display scores on the page
 
 
 startBtn.addEventListener("click", () => {    
