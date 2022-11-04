@@ -5,7 +5,6 @@ let answerList = document.getElementById("list");
 let timeH3 = document.querySelector("h3");
 let userScore = document.getElementById("user-score");
 const submitScore = document.getElementById("submit-score");
-const highScores = document.getElementById("top-scores");
 
 const scoreList = document.getElementById("score-list");
 
@@ -124,6 +123,7 @@ function handleSubmit(event) {
         } else {
             allScores = JSON.parse(allScores);
         };
+
         // Push most recent user score to all scores
         allScores.push(userScore);
 
@@ -136,13 +136,15 @@ function handleSubmit(event) {
         const newScore = JSON.stringify(allScores);
         localStorage.setItem("allScores", newScore);
 
-        console.log(allScores);
+
+        // tutorial: https://www.youtube.com/watch?v=jfOv18lCMmw&ab_channel=JamesQQuick
+        scoreList.innerHTML = allScores
+        .map(score => {
+            return `<li class="all-scores">${score.initials} - ${score.score}</li>`;
+        })
+        .join("");
     };
 };
-
-
-
-// TODO: Display scores on the page
 
 
 startBtn.addEventListener("click", () => {    
