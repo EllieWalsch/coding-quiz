@@ -4,6 +4,7 @@ let questionH2 = document.getElementById("question");
 let answerList = document.getElementById("list");
 let timeH3 = document.querySelector("h3");
 let userScore = document.getElementById("user-score");
+const submitScore = document.getElementById("submit-score");
 let timeSeconds = 50;
 const interval = 1000;
 
@@ -76,7 +77,7 @@ function startTimer() {
     const startTimerInterval = setInterval (function (){
         timeSeconds--;
         timeH3.innerHTML = `${timeSeconds} seconds remaining!`;
-        if (i < 0) {
+        if (timeSeconds <= 0) {
             clearInterval(startTimerInterval);
             showScores();
         } else if (currentQuestionIndex === questions.length){
@@ -94,7 +95,19 @@ function showScores () {
 }
 
 
-// TODO: enter initials and save score
+// TODO: save initials on high score page
+
+function handleSubmit(event) {
+    event.preventDefault();
+    const initials = document.querySelector("#initials").value;
+    if (initials == "") {
+        alert("Please enter your initials.");
+        return false;
+    } else {
+        console.log(initials);
+    }
+
+}
 
 
 
@@ -103,6 +116,8 @@ startBtn.addEventListener("click", () => {
     startTimer();    
 });
 answerList.addEventListener("click", checkAnswer);
+submitScore.addEventListener("click", handleSubmit);
+
 
 
 
