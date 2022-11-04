@@ -3,7 +3,7 @@ const startBtn = document.querySelector("#btn");
 let questionH2 = document.getElementById("question");
 let answerList = document.getElementById("list");
 let timeH3 = document.querySelector("h3");
-let userScore = document.getElementById("high-score");
+let userScore = document.getElementById("user-score");
 let timeSeconds = 50;
 const interval = 1000;
 
@@ -90,11 +90,12 @@ function startTimer() {
 function showScores () {
     document.querySelector("#high-score").style.display = "block";
     document.querySelector("#quiz").style.display = "none";
-    userScore.innerText = `Your score is ${timeSeconds}`;
+    userScore.innerText = `Your final score is ${timeSeconds}`;
 }
 
+
 // TODO: enter initials and save score
-// TODO: this will have to be a form?
+
 
 
 startBtn.addEventListener("click", () => {    
