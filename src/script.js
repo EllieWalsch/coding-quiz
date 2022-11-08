@@ -5,7 +5,6 @@ let answerList = document.getElementById("list");
 let timeH3 = document.querySelector("h3");
 let userScore = document.getElementById("user-score");
 const submitScore = document.getElementById("submit-score");
-
 const scoreList = document.getElementById("score-list");
 
 let timeSeconds = 50;
@@ -21,17 +20,17 @@ hideScores ();
 function hideIntro () {
     document.querySelector("#header").classList.toggle("hidden");
     startQuestions();
-}
+};
 
 // Hide quiz at the very beginning
 function hideQuiz () {
     document.querySelector("#quiz").classList.toggle("hidden");
-}
+};
 
 // Hide scores during intro and quiz
 function hideScores () {
     document.querySelector("#high-score").classList.toggle("hidden");
-}
+};
 
 
 // Begin at question index 0
@@ -53,7 +52,7 @@ function startQuestions () {
         li.innerHTML = `<button type="button">${choice}</button>`;
         answerList.appendChild(li);
     });
-}
+};
 
 
 // Compare user answer with correct answer
@@ -63,7 +62,7 @@ function checkAnswer(event) {
         timeSeconds = timeSeconds + 5;
     } else {
         timeSeconds = timeSeconds - 10;
-    }
+    };
     // Add 1 to our currentQuestionIndex to show another question
     if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex ++;
@@ -71,10 +70,10 @@ function checkAnswer(event) {
     } else {
         showScores (); 
         return timeSeconds;
-    }
-}
+    };
+};
 
-// TODO: BUG still clears time after 50 seconds
+
 // Added a placeholder last question - fix this later
 // Countdown remaining time
 function startTimer() {
@@ -87,9 +86,9 @@ function startTimer() {
         } else if (currentQuestionIndex == 7){
             clearInterval(startTimerInterval);
             showScores ();
-        }
-    }, interval)
-}
+        };
+    }, interval);
+};
 
 
 // Show timeSeconds as user score
@@ -97,8 +96,7 @@ function showScores () {
     document.querySelector("#high-score").style.display = "block";
     document.querySelector("#quiz").style.display = "none";
     userScore.innerText = `Your final score is ${timeSeconds}`;
-}
-
+};
 
 
 // Add initials and score to localStorage
